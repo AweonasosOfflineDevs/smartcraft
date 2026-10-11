@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "smartcraft:block/smartdel_calamar"
+    },
+    "facing=east": {
+      "model": "smartcraft:block/smartdel_calamar",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "smartcraft:block/smartdel_calamar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smartcraft:block/smartdel_calamar",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "smartcraft:block/smartdel_calamar",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "smartcraft:block/smartdel_calamar",
+      "x": 90
+    }
+  }
+}

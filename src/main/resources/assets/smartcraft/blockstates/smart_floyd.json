@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "smartcraft:block/smart_floyd"
+    },
+    "facing=east": {
+      "model": "smartcraft:block/smart_floyd",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "smartcraft:block/smart_floyd",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smartcraft:block/smart_floyd",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "smartcraft:block/smart_floyd",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "smartcraft:block/smart_floyd",
+      "x": 90
+    }
+  }
+}

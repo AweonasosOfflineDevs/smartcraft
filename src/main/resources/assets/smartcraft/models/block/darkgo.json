@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "smartcraft:block/smartinferior",
+    "up": "smartcraft:block/darkgoposterior",
+    "north": "smartcraft:block/smartiredfuckboyfirscreation",
+    "east": "smartcraft:block/smartderecha",
+    "south": "smartcraft:block/posterior",
+    "west": "smartcraft:block/smartizquierda",
+    "particle": "smartcraft:block/smartinferior"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "smartcraft:block/fixioninferior",
+    "up": "smartcraft:block/superior",
+    "north": "smartcraft:block/smartfixion",
+    "east": "smartcraft:block/fixionderecha",
+    "south": "smartcraft:block/posterior",
+    "west": "smartcraft:block/fixionizquierda",
+    "particle": "smartcraft:block/fixioninferior"
+  }
+}

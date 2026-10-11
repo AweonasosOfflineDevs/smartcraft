@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "smartcraft:block/smartinferior",
+    "up": "smartcraft:block/2807superior",
+    "north": "smartcraft:block/smart2807volviamiraicescarajo",
+    "east": "smartcraft:block/2807derecha",
+    "south": "smartcraft:block/2807posterior",
+    "west": "smartcraft:block/2807izquierda",
+    "particle": "smartcraft:block/smartinferior"
+  }
+}

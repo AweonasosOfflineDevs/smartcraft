@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "smartcraft:block/mitroxinferior",
+    "up": "smartcraft:block/superior",
+    "north": "smartcraft:block/smartrox",
+    "east": "smartcraft:block/mitroxderecha",
+    "south": "smartcraft:block/posterior",
+    "west": "smartcraft:block/mitroxizquierda",
+    "particle": "smartcraft:block/mitroxinferior"
+  }
+}

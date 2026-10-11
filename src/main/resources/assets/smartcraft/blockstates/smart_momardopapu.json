@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "smartcraft:block/smart_momardopapu"
+    },
+    "facing=east": {
+      "model": "smartcraft:block/smart_momardopapu",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "smartcraft:block/smart_momardopapu",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smartcraft:block/smart_momardopapu",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "smartcraft:block/smart_momardopapu",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "smartcraft:block/smart_momardopapu",
+      "x": 90
+    }
+  }
+}

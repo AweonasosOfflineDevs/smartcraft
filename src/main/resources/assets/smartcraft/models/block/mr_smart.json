@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "smartcraft:block/mrsmartinferior",
+    "up": "smartcraft:block/superior",
+    "north": "smartcraft:block/mr.smart",
+    "east": "smartcraft:block/mrsmartderecha",
+    "south": "smartcraft:block/posterior",
+    "west": "smartcraft:block/mrsmartizquierda",
+    "particle": "smartcraft:block/mrsmartinferior"
+  }
+}

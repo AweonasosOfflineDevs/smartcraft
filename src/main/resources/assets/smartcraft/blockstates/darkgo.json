@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "smartcraft:block/darkgo"
+    },
+    "facing=east": {
+      "model": "smartcraft:block/darkgo",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "smartcraft:block/darkgo",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smartcraft:block/darkgo",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "smartcraft:block/darkgo",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "smartcraft:block/darkgo",
+      "x": 90
+    }
+  }
+}

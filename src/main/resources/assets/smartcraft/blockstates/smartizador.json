@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "smartcraft:block/smartizador"},
+    "facing=east": {"model": "smartcraft:block/smartizador", "y": 90},
+    "facing=south": {"model": "smartcraft:block/smartizador", "y": 180},
+    "facing=west": {"model": "smartcraft:block/smartizador", "y": 270}
+  }
+}

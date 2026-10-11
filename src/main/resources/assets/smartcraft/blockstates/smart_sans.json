@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "smartcraft:block/smart_sans"
+    },
+    "facing=east": {
+      "model": "smartcraft:block/smart_sans",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "smartcraft:block/smart_sans",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "smartcraft:block/smart_sans",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "smartcraft:block/smart_sans",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "smartcraft:block/smart_sans",
+      "x": 90
+    }
+  }
+}

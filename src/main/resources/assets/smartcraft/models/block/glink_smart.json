@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "smartcraft:block/glinkinferior",
+    "up": "smartcraft:block/superior",
+    "north": "smartcraft:block/glink0smart",
+    "east": "smartcraft:block/glinkderecha",
+    "south": "smartcraft:block/posterior",
+    "west": "smartcraft:block/glinkizquierda",
+    "particle": "smartcraft:block/glinkinferior"
+  }
+}

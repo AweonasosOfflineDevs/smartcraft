@@ -56,6 +56,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> SMARTIZADOR = registerBlock("smartizador",
             () -> new SmartizadorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
+    public static final RegistryObject<Block> SMARTGORITA_ORE = registerBlock("smartgorita_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)));
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> registeredBlock = BLOCKS.register(name, block);
         ModItems.ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));

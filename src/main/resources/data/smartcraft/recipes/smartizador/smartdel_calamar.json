@@ -1,0 +1,7 @@
+{
+    "ingredient":  {
+                       "item":  "smartcraft:smart"
+                   },
+    "result":  "smartcraft:smartdel_calamar",
+    "type":  "smartcraft:smartizador"
+}

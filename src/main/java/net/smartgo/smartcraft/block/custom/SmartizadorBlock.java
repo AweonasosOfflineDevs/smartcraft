@@ -15,7 +15,22 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class SmartizadorBlock extends Block {
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
+import net.smartgo.smartcraft.block.entity.ModBlockEntities;
+import net.smartgo.smartcraft.block.entity.SmartizadorBlockEntity;
+public class SmartizadorBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     private static final VoxelShape SHAPE = Shapes.or(
             Block.box(0, 0, 0, 16, 1, 16),
@@ -31,6 +46,41 @@ public class SmartizadorBlock extends Block {
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
+    @Override
+    public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new SmartizadorBlockEntity(pos, state);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return level.isClientSide ? null : createTickerHelper(type, ModBlockEntities.SMARTIZADOR.get(),
+                (world, pos, blockState, machine) -> machine.refill());
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
+                                 InteractionHand hand, BlockHitResult hit) {
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer
+                && level.getBlockEntity(pos) instanceof SmartizadorBlockEntity machine) {
+            NetworkHooks.openScreen(serverPlayer, machine, pos);
+        }
+        return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState nextState, boolean moving) {
+        if (!state.is(nextState.getBlock()) && !level.isClientSide
+                && level.getBlockEntity(pos) instanceof SmartizadorBlockEntity machine) {
+            for (int slot = 0; slot < 2; slot++) {
+                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(),
+                        machine.inventory.extractItem(slot, 64, false));
+            }
+        }
+        super.onRemove(state, level, pos, nextState, moving);
+    }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());

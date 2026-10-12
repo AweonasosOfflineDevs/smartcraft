@@ -2,6 +2,11 @@ package net.smartgo.smartcraft;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.smartgo.smartcraft.client.SmartizadorScreen;
+import net.smartgo.smartcraft.block.entity.ModBlockEntities;
+import net.smartgo.smartcraft.menu.ModMenus;
+import net.smartgo.smartcraft.recipe.ModRecipes;
 import net.smartgo.smartcraft.item.ModCreativeModeTabs;
 import net.smartgo.smartcraft.block.ModBlocks;
 import net.smartgo.smartcraft.item.ModItems;
@@ -31,6 +36,9 @@ public class SmartCraft
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenus.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
 
         // Register the commonSetup method for modloading
@@ -67,6 +75,7 @@ public class SmartCraft
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            event.enqueueWork(() -> MenuScreens.register(ModMenus.SMARTIZADOR.get(), SmartizadorScreen::new));
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

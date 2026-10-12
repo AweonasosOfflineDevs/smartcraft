@@ -1,5 +1,12 @@
 
 {
+  "gui.smartcraft.smartizador.no_recipes": "Sin recetas disponibles",
+  "gui.smartcraft.smartizador.charge": "Carga: %s/%s",
+  "item.smartcraft.smartcore": "Smartcore",
+  "tooltip.smartcraft.smartcore.uses": "Carga restante: %s/%s",
+  "item.smartcraft.smartgorita_lingote": "Lingote de Smartgorita",
+  "item.smartcraft.smartgorita_bruto": "Smartgorita bruta",
+  "block.smartcraft.smartgorita_ore": "Mena de Smartgorita",
   "block.smartcraft.smartrox": "Smartrox",
   "block.smartcraft.smart_kek": "SmartKek",
   "block.smartcraft.smart_del_oxxo": "SmartDelOxxo",

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LL",
+    "MM"
+  ],
+  "key": {
+    "L": {"tag": "minecraft:wool"},
+    "M": {"tag": "minecraft:planks"}
+  },
+  "result": {
+    "item": "smartcraft:smart",
+    "count": 1
+  }
+}

@@ -52,6 +52,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SMARTSMILE.get());
                         output.accept(ModBlocks.SMARTTLER.get());
                         output.accept(ModBlocks.SMARTY.get());
+                        output.accept(ModBlocks.SMARTGORITA_ORE.get());
+                        output.accept(ModItems.SMARTGORITA_BRUTO.get());
+                        output.accept(ModItems.SMARTGORITA_LINGOTE.get());
+                        output.accept(ModItems.SMARTCORE.get());
                     })
                     .build());
 

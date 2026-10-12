@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "smartcraft:smart"},
+    {"item": "smartcraft:smartcore"},
+    {"tag": "minecraft:planks"},
+    {"tag": "minecraft:planks"}
+  ],
+  "result": {"item": "smartcraft:smartizador", "count": 1}
+}

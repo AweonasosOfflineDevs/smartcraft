@@ -1,0 +1,7 @@
+{
+    "ingredient":  {
+                       "item":  "smartcraft:smart"
+                   },
+    "result":  "smartcraft:mr_smart",
+    "type":  "smartcraft:smartizador"
+}

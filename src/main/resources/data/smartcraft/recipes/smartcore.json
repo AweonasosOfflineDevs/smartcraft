@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" L ", "LPL", " L "],
+  "key": {
+    "L": {"item": "smartcraft:smartgorita_lingote"},
+    "P": {"item": "minecraft:gunpowder"}
+  },
+  "result": {"item": "smartcraft:smartcore", "count": 1}
+}

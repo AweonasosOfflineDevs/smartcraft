@@ -1,0 +1,7 @@
+{
+    "ingredient":  {
+                       "item":  "smartcraft:smart"
+                   },
+    "result":  "smartcraft:smart_del_oxxo",
+    "type":  "smartcraft:smartizador"
+}

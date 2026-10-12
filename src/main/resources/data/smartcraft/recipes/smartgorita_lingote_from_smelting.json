@@ -1,0 +1,9 @@
+{
+    "ingredient":  {
+                       "item":  "smartcraft:smartgorita_bruto"
+                   },
+    "result":  "smartcraft:smartgorita_lingote",
+    "cookingtime":  200,
+    "experience":  0.7,
+    "type":  "minecraft:smelting"
+}

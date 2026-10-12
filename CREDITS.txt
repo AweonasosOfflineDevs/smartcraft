@@ -1,3 +1,12 @@
+SmartCraft
+
+Autores del mod según gradle.properties: Smartgo, MultexYT.
+
+Los siguientes créditos de Minecraft Forge y Forge Mod Loader se conservan
+tal como venían en la plantilla del proyecto.
+
+=========================================================================
+
 Minecraft Forge: Credits/Thank You
 
 Forge is a set of tools and modifications to the Minecraft base game code to assist 

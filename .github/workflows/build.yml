@@ -1,0 +1,100 @@
+name: Compilar y publicar SmartCraft
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+
+jobs:
+  build:
+    name: Compilar el mod
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Comprobar la versión
+        id: mod
+        shell: bash
+        run: |
+          mod_id=$(sed -n 's/^mod_id=//p' gradle.properties | tr -d '\r')
+          version=$(sed -n 's/^mod_version=//p' gradle.properties | tr -d '\r')
+          if [[ ! "$mod_id" =~ ^[a-z][a-z0-9_]+$ || ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo '::error::mod_id o mod_version no tiene un formato válido.'
+            exit 1
+          fi
+          if [[ "$GITHUB_REF_TYPE" == 'tag' && "$GITHUB_REF_NAME" != "v$version" ]]; then
+            echo "::error::La etiqueta debe ser v$version para coincidir con mod_version."
+            exit 1
+          fi
+          echo "jar=build/libs/$mod_id-$version.jar" >> "$GITHUB_OUTPUT"
+
+      - name: Preparar Java 17
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Preparar Gradle y su caché
+        uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+        with:
+          cache-provider: basic
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+
+      - name: Compilar con el wrapper
+        run: bash ./gradlew build --no-daemon --stacktrace
+
+      - name: Guardar el JAR instalable
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: smartcraft-jar
+          path: ${{ steps.mod.outputs.jar }}
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+
+  release:
+    name: Publicar en Releases
+    needs: build
+    if: >-
+      github.repository == 'AweonasosOfflineDevs/smartcraft' &&
+      github.event_name == 'push' && github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Descargar el JAR compilado
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: smartcraft-jar
+          path: dist
+
+      - name: Crear la release con el JAR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          release_flags=()
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then
+            release_flags+=(--prerelease)
+          fi
+          gh release create "$GITHUB_REF_NAME" dist/*.jar \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "SmartCraft $GITHUB_REF_NAME" \
+            --notes 'Descarga el archivo .jar y colócalo en la carpeta mods de Minecraft con Forge. Los requisitos de esta versión están en el README incluido en el código de la etiqueta.' \
+            "${release_flags[@]}"
